@@ -143,11 +143,11 @@ void _runFilter(String enteredKeyword) {
   Widget build(BuildContext context){
     var number = NumberFormat.currency(name: 'MZN');
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
+      resizeToAvoidBottomInset: false,
+      body: Column(
           children: [
             const TPrimaryHeaderContainer(
-              size: 150,
+              size: 125,
               child: Column(
                children: [
                 TPaymentsAppBar(),
@@ -213,10 +213,11 @@ void _runFilter(String enteredKeyword) {
                           child: Text('Resultados: ${_paymentList.length}')
                         ),
                         SizedBox(
-                          height: 600,
+                          height: 380,
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
-                            
+                            shrinkWrap: true,
+
                             itemCount: _paymentList.length,
                             itemBuilder: (BuildContext context, int index){
                               PaymentModel payment = _paymentList[index];
@@ -245,7 +246,6 @@ void _runFilter(String enteredKeyword) {
   
           ],
         ),
-      ),
     );
   }
 }

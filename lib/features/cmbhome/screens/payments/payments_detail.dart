@@ -231,6 +231,20 @@ class _PaymentsDetailsScreenState extends State<PaymentsDetailsScreen> {
                         alignment: Alignment.centerLeft,
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
+                          child: Text('Qtd: ${payment.quantity}',style: const TextStyle(fontSize: 12),),
+                        ),
+                      ),
+                       Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text('Total: ${number.format(double.parse(payment.total.toString()))}',style: const TextStyle(fontSize: 12),),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Text('Metodo: ${payment.method}',style: const TextStyle(fontSize: 12),),
                         ),
                       ),
@@ -242,7 +256,7 @@ class _PaymentsDetailsScreenState extends State<PaymentsDetailsScreen> {
                               child: SizedBox(
                                 height: 100,
                                 child: SfBarcodeGenerator(
-                                    value: '${payment.id}',
+                                    value: '${payment.uuid}',
                                     symbology: QRCode(),
                                   ),
                               ),
@@ -385,11 +399,25 @@ class _PaymentsDetailsScreenState extends State<PaymentsDetailsScreen> {
                         child: pw.Text('Valor: ${number.format(double.parse(payment.amount.toString()))}',style: const pw.TextStyle(fontSize: 12),),
                   ),
               ),
+               pw.Align(
+                  alignment: pw.Alignment.centerLeft,
+                  child: pw.Padding(
+                  padding: pw.EdgeInsets.all(8.0),
+                        child: pw.Text('Qtd: ${payment.quantity}',style: const pw.TextStyle(fontSize: 12),),
+                  ),
+              ),
+              pw.Align(
+                  alignment: pw.Alignment.centerLeft,
+                  child: pw.Padding(
+                  padding: pw.EdgeInsets.all(8.0),
+                        child: pw.Text('Total: ${number.format(double.parse(payment.total.toString()))}',style: const pw.TextStyle(fontSize: 12),),
+                  ),
+              ),
             pw.Align(
                   alignment: pw.Alignment.centerLeft,
                   child: pw.Padding(
                   padding: pw.EdgeInsets.all(8.0),
-                        child: pw.Text('Valor: ${payment.method}',style: const pw.TextStyle(fontSize: 12),),
+                        child: pw.Text('Metodo: ${payment.method}',style: const pw.TextStyle(fontSize: 12),),
                   ),
               ),
               pw.Divider(),
@@ -403,7 +431,7 @@ class _PaymentsDetailsScreenState extends State<PaymentsDetailsScreen> {
                     barcode: pw.Barcode.qrCode(
                       errorCorrectLevel: pw.BarcodeQRCorrectionLevel.high,
                     ),
-                    data: '${payment.id}',
+                    data: '${payment.uuid}',
                     width: 100,
                     height: 100,
                   ),

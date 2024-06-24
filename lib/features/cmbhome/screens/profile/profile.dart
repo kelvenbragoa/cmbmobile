@@ -37,13 +37,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: [
             const TPrimaryHeaderContainer(
-              size: 150,
+              size: 125,
               child: Column(
                children: [
                 TProfileAppBar(),
                 SizedBox(height: TSizes.spaceBetwSections,),
-
-                
                ],
               )
             ),

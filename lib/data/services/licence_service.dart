@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:cmbapp/data/repositories/api_response.dart';
 import 'package:cmbapp/data/repositories/licence_model.dart';
+import 'package:cmbapp/data/services/user_services.dart';
 import 'package:cmbapp/utils/constants/api_constants.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,12 +18,13 @@ Future<ApiResponse> getAllLicences() async {
     
     
     final response = await http.get(
-      Uri.parse(APIConstants.licenceURL),
+      Uri.parse('${APIConstants.licenceURL}/${UserService.userProfile.id}/user'),
       headers: {'Accept':'application/json',
      }
     );
 
     var values = jsonDecode(response.body)['licences'];
+
 
 
    
@@ -105,9 +107,6 @@ Future<ApiResponse> getLicence(id) async {
     var values = jsonDecode(response.body)['licence'];
 
 
-     
-    
-  print(values);
 
     if(values.length>0){
       

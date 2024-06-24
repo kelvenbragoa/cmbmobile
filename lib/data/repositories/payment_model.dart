@@ -1,6 +1,8 @@
 class PaymentModel{
   int id;
   var amount;
+  var total;
+  var quantity;
   String name;
   String title;
   String obs;
@@ -10,6 +12,8 @@ class PaymentModel{
   String latitude;
   String longitude;
   String method;
+  String uuid;
+  int status;
 
 
 
@@ -27,7 +31,13 @@ class PaymentModel{
     required this.lastName,
     required this.latitude,
     required this.longitude,
-    required this.method
+    required this.method,
+    required this.total,
+    required this.quantity,
+    required this.uuid,
+    required this.status
+
+
 
    
   });
@@ -38,6 +48,8 @@ class PaymentModel{
       id: json['id'],
       name: json['fee']['name'],
       amount: json['amount'],
+      total: json['total'],
+      quantity: json['quantity'],
       title: json['title'],
       obs: json['obs'],
       method: json['method'],
@@ -46,8 +58,8 @@ class PaymentModel{
       lastName: json['user']['last_name'],
       latitude: json['latitude'],
       longitude: json['longitude'],
-
-      
+      status: json['status'],
+      uuid: json['uuid']
     );
   }
 }

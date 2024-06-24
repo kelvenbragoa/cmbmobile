@@ -101,34 +101,34 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: const TSearchContainer(text: "Procurar",)),
                 const SizedBox(height: TSizes.spaceBetwSections,),
-                Padding(
-                  padding: EdgeInsets.only(left: TSizes.defaultSpace),
-                  child: Column(
-                    children: [
-                      const TSectionHeading(title: "Principais Taxas",showActionButton: false,textColor: TColors.white,),
-                      const SizedBox(height: TSizes.spaceBetwItems,),
-                      //categorias
-                      SizedBox(
-                        height: 80,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: licenceDashboard.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (_,index){
-                            LicenceModel licence = licenceDashboard[index];
-                            return  TVerticalImageText(
-                              title: licence.name,
-                              onTap: (){
-                                Get.to(FeesDetailScreen(id: licence.id));
-                              },);
-                          },
+                // Padding(
+                //   padding: EdgeInsets.only(left: TSizes.defaultSpace),
+                //   child: Column(
+                //     children: [
+                //       const TSectionHeading(title: "Principais Taxas",showActionButton: false,textColor: TColors.white,),
+                //       const SizedBox(height: TSizes.spaceBetwItems,),
+                //       //categorias
+                //       SizedBox(
+                //         height: 80,
+                //         child: ListView.builder(
+                //           shrinkWrap: true,
+                //           itemCount: licenceDashboard.length,
+                //           scrollDirection: Axis.horizontal,
+                //           itemBuilder: (_,index){
+                //             LicenceModel licence = licenceDashboard[index];
+                //             return  TVerticalImageText(
+                //               title: licence.name,
+                //               onTap: (){
+                //                 Get.to(FeesDetailScreen(id: licence.id));
+                //               },);
+                //           },
                           
-                          ),
-                      )
+                //           ),
+                //       )
                       
-                    ],
-                  ),
-                  )
+                //     ],
+                //   ),
+                //   )
                ],
               )
             ),

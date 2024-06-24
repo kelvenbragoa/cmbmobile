@@ -42,7 +42,6 @@ Future<ApiResponse> getAllPayments() async {
         for(int i=0;i<values.length;i++){
            
           if(values[i]!=null){
-            print(values[i]);
             Map<String,dynamic> map=values[i];
             paymentList.add(PaymentModel.fromJson(map));
           }}
@@ -186,7 +185,7 @@ Future<ApiResponse> getPayment(id) async {
 
 
 
-Future<ApiResponse> createPayment(int userid, int payment_id, String title, String obs, String method) async {
+Future<ApiResponse> createPayment(int userid, int payment_id, String title, String obs, String method, String quantity) async {
   
 
   
@@ -208,7 +207,12 @@ ApiResponse apiResponse = ApiResponse();
       'latitude': '${position.latitude}',
       'longitude':  '${position.longitude}',
       'method':  method,
+      'quantity':  quantity,
+
     } );
+
+
+
 
     
 

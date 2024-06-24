@@ -146,11 +146,11 @@ void _runFilter(String enteredKeyword) {
   Widget build(BuildContext context){
     var number = NumberFormat.currency(name: 'MZN');
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
+      resizeToAvoidBottomInset: false,
+      body: Column(
           children: [
             const TPrimaryHeaderContainer(
-              size: 150,
+              size: 125,
               child: Column(
                children: [
                 TFeesAppBar(),
@@ -175,9 +175,7 @@ void _runFilter(String enteredKeyword) {
             
                 ),
             ),
-               const SizedBox(
-                height: TSizes.spaceBetwItems,
-              ),
+               
 
              _loading ? const Padding(
       
@@ -195,62 +193,63 @@ void _runFilter(String enteredKeyword) {
                         ],
                       )),
                     ) : 
-                Column(
-                  children: [
-                    Container(
-                          margin: const EdgeInsets.all(4),
-                          child: TextField(
-                            controller: controller,
-                            decoration: InputDecoration(
-                              prefixIcon: const Icon(Iconsax.search_normal),
-                              hintText: 'Taxa ou Licença',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                borderSide: const BorderSide(color: Color.fromARGB(255, 76, 175, 163))
-                              )
+            Column(
+                    children: [
+                      Container(
+                            margin: const EdgeInsets.all(4),
+                            child: TextField(
+                              controller: controller,
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(Iconsax.search_normal),
+                                hintText: 'Taxa ou Licença',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: const BorderSide(color: Color.fromARGB(255, 76, 175, 163))
+                                )
+                              ),
+                              onChanged: _runFilter,
                             ),
-                            onChanged: _runFilter,
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(2),
-                          alignment: Alignment.bottomLeft,
-                          child: Text('Resultados: ${_licenceList.length}')
-                        ),
-                        SizedBox(
-                          height: 600,
-                          child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            
-                            itemCount: _licenceList.length,
-                            itemBuilder: (BuildContext context, int index){
-                              LicenceModel licence = _licenceList[index];
-                              return 
-                                 ListTile(
-                                  onTap: (){
-                                    Get.to(FeesDetailScreen(id: licence.id));
-                                  },
-                                  leading: CircleAvatar(
-                                    backgroundColor: TColors.primary,
-                                    child: Text('${index+1}'),
-                                  ),
-                                  title: Text(licence.name),
-                                  subtitle: Text(number.format(double.parse(licence.amount.toString()))),
-                                  trailing: const Icon(Icons.more_vert),
-                                );
-                              
-                            }
-                            ),
-                        )
-                        
-                  ],
+                          Container(
+                            margin: const EdgeInsets.all(2),
+                            alignment: Alignment.bottomLeft,
+                            child: Text('Resultados: ${_licenceList.length}')
+                          ),
+                          SizedBox(
+                            height: 370,
+                            child: 
+                            ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: _licenceList.length,
+                              itemBuilder: (BuildContext context, int index){
+                                LicenceModel licence = _licenceList[index];
+                                return 
+                                   ListTile(
+                                    onTap: (){
+                                      Get.to(FeesDetailScreen(id: licence.id));
+                                    },
+                                    leading: CircleAvatar(
+                                      backgroundColor: TColors.primary,
+                                      child: Text('${index+1}'),
+                                    ),
+                                    title: Text(licence.name),
+                                    subtitle: Text(number.format(double.parse(licence.amount.toString()))),
+                                    trailing: const Icon(Icons.more_vert),
+                                  );
+                                
+                              }
+                              ),
+                          )
+                          
+                    ],
+                  
                 )
          
             
   
           ],
         ),
-      ),
     );
   }
 }

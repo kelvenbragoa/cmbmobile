@@ -80,28 +80,22 @@ class HelperMethods{
     }
 
     if(today > Global.end_app_lp!){
-      print('terminou lp');
       await pref.setString('status_app_lp', 'inativo');
       Global.status_app_lp = 'inativo';
     }else{
-      print('Em vigor lp');
       await pref.setString('status_app_lp', 'ativo');
       Global.status_app_lp = 'ativo';
     }
 
     if(today > Global.end_app_pro!){
-      print('terminou pro');
       await pref.setString('status_app_pro', 'inativo');
       Global.status_app_pro = 'inativo';
     }else{
-      print('Em vigor pro');
       await pref.setString('status_app_pro', 'ativo');
       Global.status_app_pro = 'ativo';
     }
 
-    // print(start_app);
-    // print(end_app);
-    // print(status_app);
+
     
 
   }

@@ -39,6 +39,7 @@ const List<String> list = <String>['cash', 'emola', 'mpesa'];
 class _FeesDetailScreenState extends State<FeesDetailScreen> {
   List<dynamic> _licenceList = [];
   List<dynamic> _licenceListSearch = [];
+  final TextEditingController _quantityController = new TextEditingController(text: '1');
   final TextEditingController _titleController =
       TextEditingController(text: '');
   final TextEditingController _obsController = TextEditingController(text: '');
@@ -54,7 +55,7 @@ class _FeesDetailScreenState extends State<FeesDetailScreen> {
     });
 
     var res = await createPayment(UserService.userProfile.id, widget.id,
-        _titleController.text, _obsController.text,dropdownValue);
+        _titleController.text, _obsController.text,dropdownValue, _quantityController.text);
 
     if (res.error == null) {
       Get.back();
@@ -223,12 +224,25 @@ class _FeesDetailScreenState extends State<FeesDetailScreen> {
                             horizontal: TSizes.defaultSpace,
                             vertical: TSizes.spaceBetwItems / 2),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: _quantityController,
+                          decoration: const InputDecoration(
+                              prefixIcon: Icon(Iconsax.add),
+                              labelText: 'Quantidade'),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: TSizes.defaultSpace,
+                            vertical: TSizes.spaceBetwItems / 2),
+                        child: TextFormField(
                           keyboardType: TextInputType.text,
                           controller: _titleController,
                           decoration: const InputDecoration(
                               prefixIcon: Icon(Iconsax.direct_right),
                               labelText: 'Título'),
                         ),
+                        
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(

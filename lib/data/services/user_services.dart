@@ -15,7 +15,6 @@ static UserData userProfile = UserData(id: 0, firstName: '', lastName: '', mobil
 
 Future<ApiResponse> loginUser (String email, String password) async {
 
-  print('iniciando chamada de login');
 
 
   ApiResponse apiResponse = ApiResponse();
@@ -29,7 +28,6 @@ Future<ApiResponse> loginUser (String email, String password) async {
       }
     );
 
-    print(response.body);
 
     
 
@@ -60,7 +58,6 @@ Future<ApiResponse> loginUser (String email, String password) async {
 
     
     apiResponse.error = APIConstants.serverError;
-    print(e);
   
   }
 
@@ -93,7 +90,6 @@ Future<ApiResponse> registerUser (String firstName,String lastName, String email
       }
     );
 
-    print(response.body);
 
 
 
@@ -122,7 +118,6 @@ Future<ApiResponse> registerUser (String firstName,String lastName, String email
       apiResponse.error = APIConstants.serverError;
     }
   }catch (e){
-    print(e);
     apiResponse.error = APIConstants.serverError;
   }
 
